@@ -1,8 +1,7 @@
 import { Geist } from "next/font/google";
-import { ThemeProvider } from "next-themes";
+import NavbarWrapper from "@/components/NavbarWrapper";
+import Provider from "@/components/Layout/Provider";
 import "./globals.css";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import Navbar from "@/components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -10,7 +9,7 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -18,17 +17,10 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <body className={`${geistSans.className} antialiased bg-black/95`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <TooltipProvider delayDuration={150}>
-            <Navbar />
-            {children}
-          </TooltipProvider>
-        </ThemeProvider>
+        <Provider>
+          <NavbarWrapper />
+          {children}
+        </Provider>
       </body>
     </html>
   );

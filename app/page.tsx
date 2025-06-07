@@ -2,7 +2,7 @@
 
 import DesktopDialog from "@/components/DesktopDialog";
 import MobileDrawer from "@/components/MobileDrawer";
-import Particles from "@/components/Particles";
+import Particles from "@/components/Home/Particles";
 import { Button } from "@/components/ui/button";
 import {
   Card,

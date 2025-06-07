@@ -5,29 +5,7 @@ import { headers } from "next/headers";
 import type { Provider } from "@supabase/supabase-js";
 import { redirect } from "next/navigation";
 
-export async function signup(formData: FormData) {
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
-  const name = formData.get("name") as string;
-  const username = formData.get("username") as string;
-
-  const supabase = await createClient();
-  const { error } = await supabase.auth.signUp({
-    email,
-    password,
-    options: {
-      data: {
-        full_name: name,
-        name: username,
-      },
-    },
-  });
-
-  if (error) throw error;
-  else redirect("/");
-}
-
-export async function signInWithOAuth(provider: Provider) {
+async function signInWithOAuth(provider: Provider) {
   const supabase = await createClient();
   const origin = (await headers()).get("origin");
 
@@ -43,3 +21,8 @@ export async function signInWithOAuth(provider: Provider) {
   if (error) throw error;
   else redirect(data.url as string);
 }
+
+const signInWithGoogle = async () => await signInWithOAuth("google");
+const signInWithGithub = async () => await signInWithOAuth("github");
+
+export { signInWithGoogle, signInWithGithub };
