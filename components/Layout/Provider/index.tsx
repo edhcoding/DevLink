@@ -11,7 +11,7 @@ export default function Provider({ children }: { children: ReactNode }) {
       enableSystem
       disableTransitionOnChange
     >
-      <TooltipProvider delayDuration={500}>
+      <TooltipProvider delayDuration={200}>
         <Toast />
         {children}
       </TooltipProvider>

@@ -24,14 +24,14 @@ interface Props {
 
 export default function DesktopDialog({ open, setOpen }: Props) {
   return (
-    <Dialog open={open} onOpenChange={setOpen} modal={false}>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogPortal>
-        <DialogContent className="w-[400px] [&>button]:hidden bg-zinc-800 border-none">
-          <DialogHeader className="relative text-white mb-4">
+        <DialogContent className="w-[400px] [&>button]:hidden">
+          <DialogHeader className="relative mb-4">
             <DialogTitle className="text-xl font-extrabold">
               로그인 후 이용 가능해요!
             </DialogTitle>
-            <DrawerDescription className="text-white">
+            <DrawerDescription>
               로그인 후 나만의 링크를 만들어보세요.
             </DrawerDescription>
             <DialogClose className="absolute -right-2 -top-2">
@@ -41,7 +41,7 @@ export default function DesktopDialog({ open, setOpen }: Props) {
           <DialogFooter>
             <div className="flex flex-col gap-4 w-full font-semibold">
               <Button
-                variant="secondary"
+                variant="outline"
                 className="w-full"
                 onClick={signInWithGoogle}
               >
@@ -52,7 +52,8 @@ export default function DesktopDialog({ open, setOpen }: Props) {
                 className="w-full"
                 onClick={signInWithGithub}
               >
-                Github로 계속하기 <GithubIcon className="" />
+                Github로 계속하기
+                <GithubIcon className="stroke-white dark:stroke-black" />
               </Button>
             </div>
           </DialogFooter>

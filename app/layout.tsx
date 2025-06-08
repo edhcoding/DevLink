@@ -16,7 +16,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="ko" suppressHydrationWarning>
-      <body className={`${geistSans.className} antialiased bg-black/95`}>
+      <body className={`${geistSans.className} antialiased dark:bg-black/95`}>
         <Provider>
           <NavbarWrapper />
           {children}

@@ -22,18 +22,18 @@ interface Props {
 export default function MobileDrawer({ open, setOpen }: Props) {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
-      <DrawerContent className="bg-zinc-800 border-none">
+      <DrawerContent className="">
         <DrawerHeader>
-          <DrawerTitle className="text-xl font-extrabold text-white">
+          <DrawerTitle className="text-xl font-extrabold">
             로그인 후 이용가능해요!
           </DrawerTitle>
-          <DrawerDescription className="text-white">
+          <DrawerDescription>
             로그인 후 나만의 링크를 만들어보세요.
           </DrawerDescription>
         </DrawerHeader>
         <DrawerFooter>
           <Button
-            variant="secondary"
+            variant="outline"
             className="w-full"
             onClick={signInWithGoogle}
           >
@@ -44,7 +44,8 @@ export default function MobileDrawer({ open, setOpen }: Props) {
             className="w-full"
             onClick={signInWithGithub}
           >
-            Github 회원가입 <GithubIcon />
+            Github 회원가입{" "}
+            <GithubIcon className="stroke-white dark:stroke-black" />
           </Button>
         </DrawerFooter>
       </DrawerContent>

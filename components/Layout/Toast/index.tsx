@@ -1,5 +1,5 @@
 import { Toaster } from "@/components/ui/sonner";
 
 export default function Toast() {
-  return <Toaster richColors position="top-center" duration={1500} />;
+  return <Toaster position="bottom-center" duration={1500} />;
 }
