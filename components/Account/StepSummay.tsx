@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { Badge } from "@/components/ui/badge";
@@ -6,13 +7,43 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { memo } from "react";
+import { useToast } from "@/hooks/useToast";
+import { memo, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 function StepSummary() {
   const { getValues, formState } = useFormContext();
   const values = getValues();
-  console.log("values", values);
+
+  const addToast = useToast();
+
+  useEffect(() => {
+    if (Object.keys(formState.errors).length > 0) {
+      Object.entries(formState.errors).forEach(([fieldName, error]) => {
+        if (error && "message" in error)
+          addToast({
+            type: "error",
+            message: `${error.message}`,
+          });
+        else if (fieldName === "links" && Array.isArray(error))
+          error.forEach((linkError) => {
+            if (linkError && typeof linkError === "object")
+              Object.entries(linkError).forEach(([_, subError]) => {
+                if (
+                  subError &&
+                  typeof subError === "object" &&
+                  "message" in subError
+                )
+                  addToast({
+                    type: "error",
+                    message: `${subError.message}`,
+                  });
+              });
+          });
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formState.errors]);
 
   return (
     <div className="flex flex-col items-center gap-4 w-full">
