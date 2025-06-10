@@ -2,9 +2,9 @@
 
 import { GithubIconBg } from "@/components/icons";
 import DarkModeBtn from "@/components/NavbarWrapper/DarkModeBtn";
+import UserDropdown from "@/components/NavbarWrapper/UserDropdown";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { signOut } from "@/lib/supabase/actions/auth/action";
 import type { User } from "@supabase/supabase-js";
 import { Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
@@ -32,9 +32,7 @@ export default function Navbar({ user }: { user: User | null }) {
         {user && (
           <>
             <Separator orientation="vertical" />
-            <Button variant="ghost" onClick={signOut}>
-              로그아웃
-            </Button>
+            <UserDropdown user={user?.user_metadata} />
           </>
         )}
       </div>

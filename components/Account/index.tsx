@@ -49,7 +49,7 @@ export default function Account({ profile, links }: Props) {
     <FormProvider {...formMethods}>
       <div className="flex flex-col items-center justify-center gap-10 w-full max-w-md mx-auto mt-4 p-4 absolute top-14">
         <div className="flex flex-col items-center gap-3">
-          <h1 className="text-4xl font-extrabold">내 정보관리</h1>
+          <h1 className="text-4xl font-extrabold">프로필 설정</h1>
           <BreadcrumbStep
             steps={steps}
             currentStep={currentStep}
