@@ -8,8 +8,10 @@ export default function NotFound() {
       <div className="max-w-md flex flex-col items-center justify-center gap-5">
         <h1 className="text-4xl font-bold">404 Not Found</h1>
         <Separator />
-        <p className="text-gray-500">사용자 정보를 불러오는데 실패했습니다.</p>
-        <Button variant="default" asChild>
+        <p className="text-gray-600 dark:text-gray-400 text-center">
+          사용자 정보를 불러오는데 실패했습니다. <br /> 홈으로 이동해주세요.
+        </p>
+        <Button variant="secondary" asChild>
           <Link href="/">홈으로 이동</Link>
         </Button>
       </div>
