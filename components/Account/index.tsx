@@ -42,7 +42,7 @@ export default function Account({ profile, links }: Props) {
 
   const onSubmit = async (data: FormData) => {
     await updateProfile(data);
-    router.push(`/${profile.username}`);
+    router.push(`/${formMethods.getValues("username")}`);
   };
 
   return (

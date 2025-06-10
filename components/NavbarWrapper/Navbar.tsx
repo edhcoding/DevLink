@@ -5,11 +5,15 @@ import DarkModeBtn from "@/components/NavbarWrapper/DarkModeBtn";
 import UserDropdown from "@/components/NavbarWrapper/UserDropdown";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import type { User } from "@supabase/supabase-js";
+import { Tables } from "@/database.types";
 import { Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
 
-export default function Navbar({ user }: { user: User | null }) {
+export default function Navbar({
+  profile,
+}: {
+  profile: Tables<"profiles"> | null;
+}) {
   return (
     <nav className=" absolute top-0 left-0 right-0 h-14 p-4 flex justify-between items-center">
       <Link href="/" className="flex items-center gap-1 text-white">
@@ -29,10 +33,10 @@ export default function Navbar({ user }: { user: User | null }) {
             <span className="text-gray-500 text-xs dark:text-white">EDH</span>
           </a>
         </Button>
-        {user && (
+        {profile && (
           <>
             <Separator orientation="vertical" />
-            <UserDropdown user={user?.user_metadata} />
+            <UserDropdown profile={profile} />
           </>
         )}
       </div>

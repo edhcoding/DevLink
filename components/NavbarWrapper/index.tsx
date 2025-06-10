@@ -5,5 +5,11 @@ export default async function NavbarWrapper() {
   const supabase = await createClient();
   const { data: user } = await supabase.auth.getUser();
 
-  return <Navbar user={user.user} />;
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("*")
+    .eq("id", user.user?.id || "")
+    .single();
+
+  return <Navbar profile={profile} />;
 }

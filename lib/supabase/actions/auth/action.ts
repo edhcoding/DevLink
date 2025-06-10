@@ -28,6 +28,7 @@ async function signOut() {
   supabase.auth.signOut();
 
   revalidatePath("/");
+  redirect("/");
 }
 
 const signInWithGoogle = async () => await signInWithOAuth("google");

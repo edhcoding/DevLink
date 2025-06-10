@@ -27,9 +27,6 @@ export default async function Page() {
   if (linksError) throw linksError;
 
   return (
-    // <div className="flex flex-col items-center justify-center w-screen h-screen overflow-scroll">
-    //   <UserProfileForm profile={profile} links={links} />
-    // </div>
     <main className="flex flex-col items-center justify-center w-screen h-screen overflow-scroll">
       <Account profile={profile} links={links} />
     </main>
