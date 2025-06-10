@@ -1,4 +1,4 @@
-import Toast from "@/components/Layout/Toast";
+import Toast from "@/components/Layout/Provider/Toast";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "next-themes";
 import { ReactNode } from "react";
@@ -11,7 +11,7 @@ export default function Provider({ children }: { children: ReactNode }) {
       enableSystem
       disableTransitionOnChange
     >
-      <TooltipProvider delayDuration={200}>
+      <TooltipProvider delayDuration={100}>
         <Toast />
         {children}
       </TooltipProvider>
