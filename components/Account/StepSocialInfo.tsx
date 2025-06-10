@@ -98,10 +98,12 @@ function StepSocialInfo({
         )}
       />
       <div className="flex gap-2 mt-5">
-        <Button variant="secondary" onClick={onPrev}>
+        <Button variant="secondary" onClick={onPrev} className="bg-transparent">
           <ChevronLeft />
+          이전
         </Button>
-        <Button variant="secondary" onClick={onNext}>
+        <Button variant="secondary" onClick={onNext} className="bg-transparent">
+          다음
           <ChevronRight />
         </Button>
       </div>

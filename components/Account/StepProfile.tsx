@@ -126,7 +126,12 @@ function StepProfile({
         )}
       />
 
-      <Button variant="secondary" onClick={onNext} className="mt-5">
+      <Button
+        variant="secondary"
+        onClick={onNext}
+        className="mt-5 bg-transparent"
+      >
+        다음
         <ChevronRight />
       </Button>
     </div>
