@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode, useState } from "react";
+import { ReactElement, ReactNode, useCallback, useState } from "react";
 
 export interface StepProps {
   name: string;
@@ -12,17 +12,20 @@ export interface FunnelProps {
 export default function useFunnel(defaultStep: string) {
   const [step, setStep] = useState(defaultStep);
 
-  const Step = (props: StepProps): ReactElement => {
+  const Step = useCallback((props: StepProps): ReactElement => {
     return <>{props.children}</>;
-  };
+  }, []);
 
-  const Funnel = ({ children }: FunnelProps) => {
-    const targetStep = children.find(
-      (childStep) => childStep.props.name === step
-    );
+  const Funnel = useCallback(
+    ({ children }: FunnelProps) => {
+      const targetStep = children.find(
+        (childStep) => childStep.props.name === step
+      );
 
-    return <>{targetStep}</>;
-  };
+      return <>{targetStep}</>;
+    },
+    [step]
+  );
 
   const nextClickHandler = (nextStep: string) => setStep(nextStep);
   const prevClickHandler = (prevStep: string) => setStep(prevStep);
