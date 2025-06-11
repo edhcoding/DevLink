@@ -113,7 +113,6 @@ function StepProfile({
               </Badge>
             </FormLabel>
             <FormControl>
-              {/* <Input placeholder="한 줄 소개를 입력해 주세요" {...field} /> */}
               <Textarea
                 placeholder="한 줄 소개를 입력해 주세요"
                 className="resize-none"

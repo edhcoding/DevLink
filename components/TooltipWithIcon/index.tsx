@@ -18,19 +18,19 @@ export default function TooltipWithIcon({ iconName, message }: Props) {
     {
       iconName: "github",
       icon: (
-        <GithubIconBg className="size-10 fill-gray-400 hover:fill-black duration-300 dark:fill-white" />
+        <GithubIconBg className="size-10 fill-gray-400 hover:fill-black duration-300 dark:hover:fill-white" />
       ),
     },
     {
       iconName: "blog",
       icon: (
-        <BlogIcon className="size-10 fill-gray-400 hover:fill-black duration-300 dark:fill-white" />
+        <BlogIcon className="size-10 fill-gray-400 hover:fill-black duration-300 dark:hover:fill-white" />
       ),
     },
     {
       iconName: "linkedin",
       icon: (
-        <LinkedinIcon className="size-10 fill-gray-400 hover:fill-black duration-300 dark:fill-white" />
+        <LinkedinIcon className="size-10 fill-gray-400 hover:fill-black duration-300 dark:hover:fill-white" />
       ),
     },
   ];

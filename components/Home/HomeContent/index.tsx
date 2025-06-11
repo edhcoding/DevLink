@@ -58,9 +58,9 @@ export default function HomeContent({
     <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden">
       <Particles className="absolute inset-0 -z-10" quantity={1000} />
 
-      <Card className="w-[320px] dark:border-none dark:bg-transparent">
+      <Card className="w-[320px] border-none bg-transparent shadow-none">
         <CardHeader>
-          <CardTitle className="flex items-center justify-center gap-2 text-black dark:text-white text-4xl font-extrabold">
+          <CardTitle className="flex items-center justify-center gap-2 text-black dark:text-white text-5xl font-extrabold mb-2">
             DevLink
             <Link className="size-8" />
           </CardTitle>
@@ -76,7 +76,7 @@ export default function HomeContent({
                 className="w-full flex items-center font-semibold"
                 onClick={() => router.push("/account")}
               >
-                나만의 링크 만들기
+                프로필 링크 만들러가기
                 <Plus className="size-4" />
               </Button>
             ) : (
@@ -87,7 +87,7 @@ export default function HomeContent({
                     className="w-full flex items-center font-semibold"
                     onClick={() => setOpen(true)}
                   >
-                    나만의 링크 만들기
+                    프로필 링크 만들러가기
                     <Plus className="size-4" />
                   </Button>
                 </TooltipTrigger>

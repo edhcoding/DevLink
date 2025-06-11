@@ -12,6 +12,7 @@ import StepSummary from "@/components/Account/StepSummay";
 import BreadcrumbStep from "@/components/BreadcrumbStep";
 import { useRouter } from "next/navigation";
 import { updateProfile } from "@/lib/supabase/actions/profile/action";
+import { DevTool } from "@hookform/devtools";
 
 interface Props {
   profile: Tables<"profiles">;
@@ -82,6 +83,9 @@ export default function Account({ profile, links }: Props) {
           </Funnel>
         </form>
       </div>
+      {process.env.NODE_ENV === "development" && (
+        <DevTool control={formMethods.control} placement="top-right" />
+      )}
     </FormProvider>
   );
 }

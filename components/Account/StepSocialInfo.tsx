@@ -26,7 +26,7 @@ function StepSocialInfo({
 
   return (
     <div className="flex flex-col items-center gap-4 w-full">
-      <div className="flex gap-14 mt-12">
+      <div className="flex gap-14 mt-12 mb-4">
         <TooltipWithIcon iconName="github" message="Github" />
         <TooltipWithIcon iconName="blog" message="Blog" />
         <TooltipWithIcon iconName="linkedin" message="Linkedin" />

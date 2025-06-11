@@ -46,7 +46,7 @@ export default function UserDropdown({
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => router.push(`/account`)}>
-          <Wrench className="mr-1" /> 프로필 설정
+          <Wrench className="mr-1" /> 프로필 수정하기
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={signOut}>
