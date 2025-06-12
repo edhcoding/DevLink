@@ -7,6 +7,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
+import ShareBtn from "@/components/UserName/ShareBtn";
 
 interface Props {
   links: Tables<"links">[] | null;
@@ -91,6 +92,7 @@ export default async function LinkList({ links, error }: Props) {
           </Card>
         </Link>
       ))}
+      <ShareBtn />
     </div>
   );
 }
