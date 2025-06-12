@@ -3,7 +3,7 @@
 import type { Tables } from "@/database.types";
 import StepProfile from "@/components/Account/StepProfile";
 import useFunnel from "@/hooks/useFunnel";
-import { FormData, formSchema } from "@/types/form";
+import { FormData } from "@/types/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 import StepSocialInfo from "@/components/Account/StepSocialInfo";
@@ -13,6 +13,7 @@ import BreadcrumbStep from "@/components/BreadcrumbStep";
 import { useRouter } from "next/navigation";
 import { updateProfile } from "@/lib/supabase/actions/profile/action";
 import { DevTool } from "@hookform/devtools";
+import { formSchema } from "@/constants/form";
 
 interface Props {
   profile: Tables<"profiles">;

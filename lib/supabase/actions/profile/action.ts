@@ -1,7 +1,7 @@
 "use server";
 
 import createClient from "@/lib/supabase/server";
-import { formSchema } from "@/types/form";
+import { formSchema } from "@/constants/form";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
