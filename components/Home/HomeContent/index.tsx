@@ -76,7 +76,7 @@ export default function HomeContent({
                 className="w-full flex items-center font-semibold"
                 onClick={() => router.push("/account")}
               >
-                프로필 링크 만들러가기
+                새로운 링크 만들기
                 <Plus className="size-4" />
               </Button>
             ) : (
@@ -87,7 +87,7 @@ export default function HomeContent({
                     className="w-full flex items-center font-semibold"
                     onClick={() => setOpen(true)}
                   >
-                    프로필 링크 만들러가기
+                    새로운 링크 만들기
                     <Plus className="size-4" />
                   </Button>
                 </TooltipTrigger>
@@ -104,9 +104,9 @@ export default function HomeContent({
             <Button
               variant="link"
               onClick={() => setUseOpen(true)}
-              className="text-black dark:text-white flex gap-1 text-xs items-center justify-center w-full mt-6"
+              className="text-black dark:text-white flex gap-1 text-sm items-center justify-center w-full mt-6"
             >
-              <Info className="size-3" /> 사용방법
+              <Info className="size-4" /> 사용법
             </Button>
             <TooltipPortal>
               <TooltipContent
@@ -140,8 +140,8 @@ export default function HomeContent({
           <DialogPortal>
             <DialogContent className="w-[400px] [&>button]:hidden">
               <DialogHeader className="relative">
-                <DialogTitle className="scroll-m-20 text-xl font-semibold tracking-tight">
-                  DevLink 사용법
+                <DialogTitle className="text-center text-2xl font-extrabold">
+                  사용법
                 </DialogTitle>
                 <DialogClose className="absolute -right-2 -top-2">
                   <XIcon className="size-5" />
@@ -149,12 +149,35 @@ export default function HomeContent({
               </DialogHeader>
               <DialogFooter>
                 <div className="w-full text-black dark:text-white">
-                  <div className="flex gap-1 flex-col">
-                    ⭐️ 하이루
-                    <ul className="gray-list-decimal [&>li]:mt-1 text-md font-normal ml-6">
-                      <li>나만의 링크를 만들어보세요.</li>
-                      <li>나만의 링크를 만들어보세요.</li>
-                      <li>나만의 링크를 만들어보세요.</li>
+                  <div className="flex gap-1 flex-col text-pretty">
+                    <h2 className="font-bold text-rose-400">
+                      🔗 프로필 링크 만들기
+                    </h2>
+                    <ul className="gray-list-decimal [&>li]:mt-1 text-sm font-medium ml-6">
+                      <li>
+                        로그인 후{" "}
+                        <span className="text-rose-200">
+                          [새로운 링크 만들기]
+                        </span>
+                        를 선택해주세요
+                      </li>
+                      <li>
+                        프로필 설정을 통해 나를 소개할 수 있는 링크를 만들 수
+                        있어요
+                      </li>
+                      <li>
+                        프로필 하단의 링크 공유 버튼을 통해 링크를 공유할 수
+                        있어요
+                      </li>
+                    </ul>
+                    <h2 className="font-bold mt-6 text-amber-300">
+                      New Update
+                    </h2>
+                    <ul className="gray-list-decimal [&>li]:mt-1 text-sm font-medium ml-6">
+                      <li>
+                        우측 상단의 프로필 사진을 클릭해 메뉴를 열 수 있어요
+                      </li>
+                      <li>욕설 필터링 기능이 추가되었어요</li>
                     </ul>
                   </div>
                 </div>

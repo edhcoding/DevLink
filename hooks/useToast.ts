@@ -18,7 +18,7 @@ export const useToast = () => {
         toast.info(message);
         break;
       default:
-        toast.success(message); // default fallback
+        toast.success(message);
         break;
     }
   };
