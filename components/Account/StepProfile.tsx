@@ -78,12 +78,19 @@ function StepProfile({
       />
       <div className="flex flex-col gap-2">
         <Button
+          type="button"
           variant="secondary"
           onClick={() => fileInputRef.current?.click()}
+          className="font-bold text-cyan-600 dark:text-cyan-300"
         >
           이미지 업로드
         </Button>
-        <Button variant="default" onClick={handleRemoveAvatar} type="button">
+        <Button
+          type="button"
+          variant="secondary"
+          onClick={handleRemoveAvatar}
+          className="text-rose-500 font-bold"
+        >
           이미지 삭제
         </Button>
       </div>
