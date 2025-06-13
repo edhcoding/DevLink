@@ -43,8 +43,8 @@ export default function Account({ profile, links }: Props) {
   const router = useRouter();
 
   const onSubmit = async (data: FormData) => {
-    await updateProfile(data);
-    router.push(`/${formMethods.getValues("username")}`);
+    const { success } = await updateProfile(data);
+    if (success)  router.push(`/${formMethods.getValues("username")}`);
   };
 
   return (

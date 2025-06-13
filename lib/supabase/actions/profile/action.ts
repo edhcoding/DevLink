@@ -16,19 +16,16 @@ export async function uploadAvatar(formData: FormData) {
   const fileExtension = file.name.split(".").pop();
   const filePath = `${userId}/avatar-${timestamp}.${fileExtension}`;
 
-  // Upload file
   const { error: uploadError } = await supabase.storage
     .from("avatars")
     .upload(filePath, file);
 
   if (uploadError) throw uploadError;
 
-  // Get public URL
   const {
     data: { publicUrl },
   } = supabase.storage.from("avatars").getPublicUrl(filePath);
 
-  // Update profile with new avatar URL
   const { error: updateError } = await supabase
     .from("profiles")
     .update({ avatar_url: publicUrl })
@@ -65,7 +62,6 @@ export async function updateProfile(formData: z.infer<typeof formSchema>) {
 
   if (profileError) throw profileError;
 
-  // Remove current links
   const { error: deleteError } = await supabase
     .from("links")
     .delete()
@@ -73,7 +69,6 @@ export async function updateProfile(formData: z.infer<typeof formSchema>) {
 
   if (deleteError) throw deleteError;
 
-  // Create new links
   const linksToInsert = formData.links.map((link) => ({
     user_id: user.id,
     url: link.url,
@@ -85,6 +80,43 @@ export async function updateProfile(formData: z.infer<typeof formSchema>) {
     .insert(linksToInsert);
 
   if (insertError) throw insertError;
+
+  revalidatePath("/account");
+
+  return { success: true };
+}
+
+export async function removeAvatar(userId: string) {
+  const supabase = await createClient();
+
+  const { data: profile, error } = await supabase
+    .from("profiles")
+    .select("avatar_url")
+    .eq("id", userId)
+    .single();
+
+  if (error) throw error;
+
+  if (profile.avatar_url) {
+    const avatarUrl = profile.avatar_url; // 파일 경로
+    const filePath = avatarUrl.split("/").pop(); // url에서 파일 이름 추출
+
+    if (filePath) {
+      const { error: removeError } = await supabase.storage
+        .from("avatars")
+        .remove([`${userId}/${filePath}`]);
+
+      if (removeError) throw removeError;
+    }
+  }
+
+  const { error: updateError } = await supabase
+    .from("profiles")
+    .update({ avatar_url: null })
+    .eq("id", userId)
+    .single();
+
+  if (updateError) throw updateError;
 
   revalidatePath("/account");
 

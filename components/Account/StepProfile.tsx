@@ -13,7 +13,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Tables } from "@/database.types";
-import { uploadAvatar } from "@/lib/supabase/actions/profile/action";
+import {
+  removeAvatar,
+  uploadAvatar,
+} from "@/lib/supabase/actions/profile/action";
 import { ChevronRight } from "lucide-react";
 import { ChangeEvent, memo, useRef } from "react";
 import { useFormContext } from "react-hook-form";
@@ -37,6 +40,11 @@ function StepProfile({
       const publicUrl = await uploadAvatar(formData);
       setValue("avatarUrl", publicUrl);
     }
+  };
+
+  const handleRemoveAvatar = async () => {
+    const { success } = await removeAvatar(profile.id);
+    if (success) setValue("avatarUrl", "");
   };
 
   return (
@@ -68,9 +76,17 @@ function StepProfile({
         onChange={handleAvatarUpload}
         accept="image/*"
       />
-      <Button variant="secondary" onClick={() => fileInputRef.current?.click()}>
-        이미지 업로드
-      </Button>
+      <div className="flex flex-col gap-2">
+        <Button
+          variant="secondary"
+          onClick={() => fileInputRef.current?.click()}
+        >
+          이미지 업로드
+        </Button>
+        <Button variant="default" onClick={handleRemoveAvatar} type="button">
+          이미지 삭제
+        </Button>
+      </div>
       {/* 이미지 제거 버튼 - 추후 추가 */}
       <FormField
         control={control}
