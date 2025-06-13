@@ -27,10 +27,11 @@ import {
   TooltipContent,
   TooltipPortal,
 } from "@radix-ui/react-tooltip";
-import { Info, Link, LogOut, Plus, QrCode, XIcon } from "lucide-react";
+import { Info, InfoIcon, Link, LogOut, Plus, QrCode } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Database } from "@/database.types";
 import { useToast } from "@/hooks/useToast";
+import { CONTACT_EMAIL } from "@/constants/contack";
 
 export default function HomeContent({
   profile,
@@ -43,6 +44,14 @@ export default function HomeContent({
   const router = useRouter();
 
   const addToast = useToast();
+
+  const handleFeedback = () => {
+    navigator.clipboard.writeText(CONTACT_EMAIL);
+    addToast({
+      type: "info",
+      message: "이메일이 복사되었어요! 피드백 주시면 감사하겠습니다.",
+    });
+  };
 
   useEffect(() => {
     if (profile)
@@ -156,24 +165,19 @@ export default function HomeContent({
         <Dialog open={useOpen} onOpenChange={setUseOpen} modal={false}>
           <DialogPortal>
             <DialogContent className="w-[400px] [&>button]:hidden">
-              <DialogHeader className="relative">
+              <DialogHeader>
                 <DialogTitle className="text-center text-2xl font-extrabold">
                   사용법
                 </DialogTitle>
-                <DialogClose className="absolute -right-2 -top-2">
-                  <XIcon className="size-5" />
-                </DialogClose>
               </DialogHeader>
               <DialogFooter>
                 <div className="w-full text-black dark:text-white">
                   <div className="flex gap-1 flex-col text-pretty">
-                    <h2 className="font-bold text-rose-400">
-                      🔗 프로필 링크 만들기
-                    </h2>
+                    <h2 className="font-extrabold">🔗 프로필 링크 만들기</h2>
                     <ul className="gray-list-decimal [&>li]:mt-1 text-sm font-medium ml-6">
                       <li>
                         로그인 후{" "}
-                        <span className="text-rose-200">
+                        <span className="text-rose-500">
                           [새로운 링크 만들기]
                         </span>
                         를 선택해주세요
@@ -183,21 +187,55 @@ export default function HomeContent({
                         있어요
                       </li>
                       <li>
-                        프로필 하단의 링크 공유 버튼을 통해 링크를 공유할 수
-                        있어요
+                        프로필 우측 하단의 QR코드나 링크 공유 버튼을 통해
+                        프로필을 공유할 수 있어요
                       </li>
                     </ul>
+
+                    <h2 className="font-extrabold mt-6">
+                      🔗 프로필 QR코드 접속
+                    </h2>
+                    <ul className="gray-list-decimal [&>li]:mt-1 text-sm font-medium ml-6">
+                      <li>
+                        로그인 후{" "}
+                        <span className="text-rose-500">
+                          [프로필 QR코드 접속]
+                        </span>
+                        를 선택해주세요
+                      </li>
+                      <li>카메라 접근 권한을 허용해주세요</li>
+                      <li>스크린에 표시된 QR코드에 이미지를 찍어주세요</li>
+                      <li>프로필 화면으로 이동해 프로필을 확인할 수 있어요</li>
+                    </ul>
+
                     <h2 className="font-bold mt-6 text-amber-300">
-                      New Update
+                      New Update ⭐️
                     </h2>
                     <ul className="gray-list-decimal [&>li]:mt-1 text-sm font-medium ml-6">
                       <li>
                         우측 상단의 프로필 사진을 클릭해 메뉴를 열 수 있어요
                       </li>
                       <li>욕설 필터링 기능이 추가되었어요</li>
+                      <li>QR코드 생성, 접속 기능이 추가되었어요</li>
                     </ul>
                   </div>
+
+                  <div className="text-black dark:text-white mt-10 flex items-center gap-1">
+                    <InfoIcon className="size-3 dark:text-gray-300" />
+                    <button
+                      type="button"
+                      className="px-0 text-xs dark:text-gray-300"
+                      onClick={handleFeedback}
+                    >
+                      피드백 보내기
+                    </button>
+                  </div>
                 </div>
+                <DialogClose className="absolute right-5 bottom-5">
+                  <Button variant="default" size="sm" className="w-[60px]">
+                    확인
+                  </Button>
+                </DialogClose>
               </DialogFooter>
             </DialogContent>
           </DialogPortal>
