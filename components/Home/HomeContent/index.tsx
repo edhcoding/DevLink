@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import DesktopDialog from "@/components/DesktopDialog";
 import MobileDrawer from "@/components/MobileDrawer";
-import Particles from "@/components/Home/Particles";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -28,7 +27,7 @@ import {
   TooltipContent,
   TooltipPortal,
 } from "@radix-ui/react-tooltip";
-import { Info, Link, LogOut, Plus, XIcon } from "lucide-react";
+import { Info, Link, LogOut, Plus, QrCode, XIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Database } from "@/database.types";
 import { useToast } from "@/hooks/useToast";
@@ -56,8 +55,6 @@ export default function HomeContent({
 
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden">
-      <Particles className="absolute inset-0 -z-10" quantity={1000} />
-
       <Card className="w-[320px] border-none bg-transparent shadow-none">
         <CardHeader>
           <CardTitle className="flex items-center justify-center gap-2 text-black dark:text-white text-5xl font-extrabold mb-2">
@@ -71,27 +68,47 @@ export default function HomeContent({
         <CardContent>
           <Tooltip>
             {profile ? (
-              <Button
-                variant="outline"
-                className="w-full flex items-center font-semibold"
-                onClick={() => router.push("/account")}
-              >
-                새로운 링크 만들기
-                <Plus className="size-4" />
-              </Button>
+              <div className="flex flex-col gap-2">
+                <Button
+                  variant="outline"
+                  className="font-semibold"
+                  onClick={() => router.push("/account")}
+                >
+                  새로운 링크 만들기
+                  <Plus className="size-4" />
+                </Button>
+                <Button
+                  variant="outline"
+                  className="font-semibold"
+                  onClick={() => router.push("/scan")}
+                >
+                  프로필 QR코드 접속
+                  <QrCode className="size-4" />
+                </Button>
+              </div>
             ) : (
               <>
-                <TooltipTrigger asChild>
+                <div className="flex flex-col gap-2">
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className="w-full flex items-center font-semibold"
+                      onClick={() => setOpen(true)}
+                    >
+                      새로운 링크 만들기
+                      <Plus className="size-4" />
+                    </Button>
+                  </TooltipTrigger>
                   <Button
                     variant="outline"
-                    className="w-full flex items-center font-semibold"
-                    onClick={() => setOpen(true)}
+                    className="font-semibold"
+                    onClick={() => router.push("/scan")}
                   >
-                    새로운 링크 만들기
-                    <Plus className="size-4" />
+                    프로필 QR코드 접속
+                    <QrCode className="size-4" />
                   </Button>
-                </TooltipTrigger>
-                <div className="w-full h-[1px] space-y-2 bg-gray-700 my-4" />
+                </div>
+                <div className="w-full h-[1px] space-y-2 bg-black dark:bg-gray-400 my-4" />
                 <Button
                   variant="default"
                   className="w-full"

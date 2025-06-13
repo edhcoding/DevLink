@@ -2,6 +2,7 @@ import { Geist } from "next/font/google";
 import NavbarWrapper from "@/components/NavbarWrapper";
 import Provider from "@/components/Layout/Provider";
 import "./globals.css";
+import Particles from "@/components/Home/Particles";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,6 +22,7 @@ export default async function RootLayout({
       >
         <Provider>
           <NavbarWrapper />
+          <Particles className="absolute inset-0 -z-10" quantity={1000} />
           {children}
         </Provider>
       </body>
