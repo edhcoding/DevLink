@@ -57,7 +57,11 @@ export default async function Page({ params }: Props) {
           <UserInfo profile={profile} error={profileError} />
         </Suspense>
         <Suspense fallback={<LinkListSkeleton />}>
-          <LinkList links={links} error={linksError} />
+          <LinkList
+            links={links}
+            error={linksError}
+            username={decodedUsername}
+          />
         </Suspense>
       </div>
     </main>

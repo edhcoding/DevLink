@@ -7,11 +7,12 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
-import ShareBtn from "@/components/UserName/ShareBtn";
+import ProfileBtn from "@/components/UserName/ProfileBtn";
 
 interface Props {
   links: Tables<"links">[] | null;
   error: Error | null;
+  username: string;
 }
 
 export const LinkListSkeleton = () => (
@@ -40,7 +41,7 @@ async function getOgImage(url: string): Promise<string | null> {
   }
 }
 
-export default async function LinkList({ links, error }: Props) {
+export default async function LinkList({ links, error, username }: Props) {
   if (error) throw error;
   if (!links) return null;
 
@@ -92,7 +93,7 @@ export default async function LinkList({ links, error }: Props) {
           </Card>
         </Link>
       ))}
-      <ShareBtn />
+      <ProfileBtn username={username} />
     </div>
   );
 }
