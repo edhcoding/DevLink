@@ -17,7 +17,7 @@ import {
   removeAvatar,
   uploadAvatar,
 } from "@/lib/supabase/actions/profile/action";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, FileUp, Trash2 } from "lucide-react";
 import { ChangeEvent, memo, useRef } from "react";
 import { useFormContext } from "react-hook-form";
 
@@ -76,22 +76,22 @@ function StepProfile({
         onChange={handleAvatarUpload}
         accept="image/*"
       />
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3">
         <Button
           type="button"
-          variant="secondary"
+          variant="default"
           onClick={() => fileInputRef.current?.click()}
-          className="font-bold text-cyan-600 dark:text-cyan-300"
+          className="font-bold"
         >
-          이미지 업로드
+          이미지 업로드 <FileUp />
         </Button>
         <Button
           type="button"
-          variant="secondary"
+          variant="outline"
           onClick={handleRemoveAvatar}
-          className="text-rose-500 font-bold"
+          className="hover:text-rose-500 font-bold"
         >
-          이미지 삭제
+          이미지 삭제 <Trash2 />
         </Button>
       </div>
       {/* 이미지 제거 버튼 - 추후 추가 */}

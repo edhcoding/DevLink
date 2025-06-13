@@ -25,7 +25,9 @@ export default function UserDropdown({
       <DropdownMenuTrigger asChild>
         <Avatar className="size-6 cursor-pointer">
           <AvatarImage src={profile.avatar_url || ""} alt="User avatar" />
-          <AvatarFallback className="hover:bg-muted/50">User</AvatarFallback>
+          <AvatarFallback className="hover:bg-muted/50 text-xs">
+            User
+          </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent sideOffset={10}>
@@ -41,8 +43,7 @@ export default function UserDropdown({
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => router.push(`/${profile.username}`)}>
-          <User className="mr-1" />
-          내 프로필
+          <User className="mr-1" />내 프로필
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => router.push(`/account`)}>

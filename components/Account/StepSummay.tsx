@@ -86,11 +86,19 @@ function StepSummary() {
           <div className="flex flex-col gap-2">
             <Label className="text-md font-semibold">추가 링크 제목</Label>
             <div className="flex gap-2 flex-wrap">
-              {values.links.map((link: { title: string }) => (
-                <Badge variant="secondary" key={link.title}>
-                  {link.title}
-                </Badge>
-              ))}
+              {values.links.map((link: { title: string }) => {
+                if (link.title.length > 0) {
+                  return (
+                    <Badge
+                      variant="secondary"
+                      key={link.title}
+                      className="truncate max-w-[100px]"
+                    >
+                      <span className="truncate">{link.title}</span>
+                    </Badge>
+                  );
+                }
+              })}
             </div>
           </div>
         )}

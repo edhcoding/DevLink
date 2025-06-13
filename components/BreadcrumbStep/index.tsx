@@ -26,11 +26,15 @@ export default function BreadcrumbStep({
           <Fragment key={step}>
             {index > 0 && <BreadcrumbSeparator />}
             <BreadcrumbItem
-              className={cn("cursor-pointer", {
-                "text-black dark:text-white font-bold": step === currentStep,
+              className={cn("cursor-pointer font-medium", {
+                "text-rose-500 dark:text-amber-300 font-bold":
+                  step === currentStep,
               })}
             >
-              <BreadcrumbLink onClick={() => nextClickHandler(step)}>
+              <BreadcrumbLink
+                onClick={() => nextClickHandler(step)}
+                className="hover:text-rose-600 dark:hover:text-amber-400"
+              >
                 {step}
               </BreadcrumbLink>
             </BreadcrumbItem>

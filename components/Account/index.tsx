@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import { updateProfile } from "@/lib/supabase/actions/profile/action";
 import { DevTool } from "@hookform/devtools";
 import { formSchema } from "@/constants/form";
+import { PersonStanding } from "lucide-react";
 
 interface Props {
   profile: Tables<"profiles">;
@@ -44,14 +45,17 @@ export default function Account({ profile, links }: Props) {
 
   const onSubmit = async (data: FormData) => {
     const { success } = await updateProfile(data);
-    if (success)  router.push(`/${formMethods.getValues("username")}`);
+    if (success) router.push(`/${formMethods.getValues("username")}`);
   };
 
   return (
     <FormProvider {...formMethods}>
       <div className="flex flex-col items-center justify-center gap-10 w-full max-w-md mx-auto mt-4 p-4 absolute top-14">
         <div className="flex flex-col items-center gap-3">
-          <h1 className="text-4xl font-extrabold">프로필 설정</h1>
+          <div className="flex flex-col items-center">
+            <PersonStanding />
+            <h1 className="text-4xl font-extrabold"> 프로필 설정</h1>
+          </div>
           <BreadcrumbStep
             steps={steps}
             currentStep={currentStep}

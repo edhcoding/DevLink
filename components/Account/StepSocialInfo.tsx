@@ -31,7 +31,7 @@ function StepSocialInfo({
         <TooltipWithIcon iconName="blog" message="Blog" />
         <TooltipWithIcon iconName="linkedin" message="Linkedin" />
       </div>
-      <p className="text-sm text-muted-foreground mb-12">
+      <p className="text-sm text-muted-foreground mb-12 font-medium">
         소셜 링크를 추가해서 프로필을 더 잘 표현해보세요!
       </p>
       <FormField
