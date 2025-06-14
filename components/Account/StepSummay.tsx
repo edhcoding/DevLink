@@ -8,12 +8,24 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/useToast";
+import { filter } from "@/utils/badwordsFilter";
 import { memo, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 function StepSummary() {
   const { getValues, formState } = useFormContext();
   const values = getValues();
+
+  const filteredValues = {
+    ...values,
+    name: filter(values.name),
+    username: filter(values.username),
+    bio: filter(values.bio),
+    links: values.links.map((link: { title: string }) => ({
+      ...link,
+      title: filter(link.title),
+    })),
+  };
 
   const addToast = useToast();
 
@@ -51,17 +63,21 @@ function StepSummary() {
         <div className="flex justify-between gap-2">
           <div>
             <Label className="text-md font-semibold">닉네임</Label>
-            <Input value={values.username} disabled />
+            <Input value={filteredValues.username} disabled />
           </div>
           <div>
             <Label className="text-md font-semibold">이름</Label>
-            <Input value={values.name} disabled />
+            <Input value={filteredValues.name} disabled />
           </div>
         </div>
-        {values.bio && (
+        {filteredValues.bio && (
           <div>
             <Label className="text-md font-semibold">한 줄 소개</Label>
-            <Textarea value={values.bio} disabled className="resize-none" />
+            <Textarea
+              value={filteredValues.bio}
+              disabled
+              className="resize-none"
+            />
           </div>
         )}
         {values.githubUrl && (
@@ -82,11 +98,11 @@ function StepSummary() {
             <Input value={values.linkedinUrl} disabled />
           </div>
         )}
-        {values.links.length > 0 && (
+        {filteredValues.links.length > 0 && (
           <div className="flex flex-col gap-2">
             <Label className="text-md font-semibold">추가 링크 제목</Label>
             <div className="flex gap-2 flex-wrap">
-              {values.links.map((link: { title: string }) => {
+              {filteredValues.links.map((link: { title: string }) => {
                 if (link.title.length > 0) {
                   return (
                     <Badge
