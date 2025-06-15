@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useCallback } from "react";
 import { isInAppBrowser, isIOS, isKakaoTalk, isLine } from "@/utils/browser";
 import { useToast } from "@/hooks/useToast";

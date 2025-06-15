@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .eq("username", decodedUsername)
     .single();
 
-  if (!profile) return { title: "Profile Not Found" };
+  if (!profile) return { title: "User Profile Not Found" };
 
   return {
     title: `@${profile.username} | Link.true`,

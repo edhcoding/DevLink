@@ -8,12 +8,15 @@ import { Separator } from "@/components/ui/separator";
 import { Tables } from "@/database.types";
 import { Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
+import useExternalBrowser from "@/hooks/useExternalBrowser";
 
 export default function Navbar({
   profile,
 }: {
   profile: Tables<"profiles"> | null;
 }) {
+  useExternalBrowser();
+
   return (
     <nav className=" absolute top-0 left-0 right-0 h-14 p-4 flex justify-between items-center">
       <Link href="/" className="flex items-center gap-1 text-white">

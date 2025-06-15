@@ -2,8 +2,8 @@ import { Geist } from "next/font/google";
 import NavbarWrapper from "@/components/NavbarWrapper";
 import Provider from "@/components/Layout/Provider";
 import Particles from "@/components/Home/Particles";
-import useExternalBrowser from "@/hooks/useExternalBrowser";
 import "./globals.css";
+import { Metadata } from "next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,13 +11,16 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+export const metadata: Metadata = {
+  title: "DevLink",
+  description: "나만의 프로필 링크를 만들고 공유하세요.",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  useExternalBrowser();
-
   return (
     <html lang="ko" suppressHydrationWarning>
       <body
