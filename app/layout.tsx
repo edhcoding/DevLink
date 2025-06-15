@@ -1,8 +1,9 @@
 import { Geist } from "next/font/google";
 import NavbarWrapper from "@/components/NavbarWrapper";
 import Provider from "@/components/Layout/Provider";
-import "./globals.css";
 import Particles from "@/components/Home/Particles";
+import useExternalBrowser from "@/hooks/useExternalBrowser";
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -10,11 +11,13 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  useExternalBrowser();
+
   return (
     <html lang="ko" suppressHydrationWarning>
       <body
