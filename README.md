@@ -1,5 +1,5 @@
 <a href="https://dev-link-iota.vercel.app">
-  <img src="./public/logo2.png" alt="Logo Image">
+  <img src="./public/logo2.webp" alt="Logo Image">
   <h1 align="center">DevLink</h1>
 </a>
 

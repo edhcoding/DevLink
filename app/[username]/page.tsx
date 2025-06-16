@@ -23,8 +23,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!profile) return { title: "User Profile Not Found" };
 
   return {
-    title: `@${profile.username} | Link.true`,
-    description: profile.bio || `Check out ${profile.username}'s profile`,
+    title: `@${profile.username} | DevLink`,
+    description: profile.bio || `${profile.username}'s profile`,
     openGraph: {
       images: [{ url: profile.avatar_url || "/default-avatar.png" }],
     },

@@ -79,7 +79,7 @@ export default async function LinkList({ links, error, username }: Props) {
             <CardContent className="flex space-x-6 items-center">
               <div className="w-16 h-16 rounded-xl overflow-hidden relative">
                 <Image
-                  src={link.ogImage || "/default-og-image.png"}
+                  src={link.ogImage || "/default-og-image.webp"}
                   alt={link.title}
                   fill
                   className="object-cover w-full h-full"
