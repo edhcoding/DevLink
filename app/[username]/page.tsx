@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `@${profile.username} | DevLink`,
     description: profile.bio || `${profile.username}'s profile`,
     openGraph: {
-      images: [{ url: profile.avatar_url || "/default-avatar.png" }],
+      images: [{ url: profile.avatar_url || "/logo2.webp" }],
     },
   };
 }

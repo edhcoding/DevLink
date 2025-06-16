@@ -2,7 +2,6 @@ import type { Tables } from "@/database.types";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import parse from "node-html-parser";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
@@ -29,12 +28,12 @@ async function getOgImage(url: string): Promise<string | null> {
       cache: "force-cache",
     });
     const html = await response.text();
-    const root = parse(html);
-    return (
-      root
-        .querySelector('meta[property="og:image"]')
-        ?.getAttribute("content") || null
-    );
+    // meta 태그를 찾고 property가 og:image인 태그의 content 속성 값을 추출
+    const ogImagePattern =
+      /<meta[^>]*property=["']og:image["'][^>]*content=["']([^"']+)["'][^>]*>/i;
+
+    const match = html.match(ogImagePattern);
+    return match?.[1] || null;
   } catch (error) {
     console.error("Error fetching OG image:", error);
     return null;
@@ -73,26 +72,31 @@ export default async function LinkList({ links, error, username }: Props) {
 
   return (
     <div className="flex flex-col gap-4 max-w-[400px] w-full px-4">
-      {linksWithOgImages.map((link) => (
-        <Link href={link.url} key={link.id}>
-          <Card className="py-4 shadow-md">
-            <CardContent className="flex space-x-6 items-center">
-              <div className="w-16 h-16 rounded-xl overflow-hidden relative">
-                <Image
-                  src={link.ogImage || "/default-og-image.webp"}
-                  alt={link.title}
-                  fill
-                  className="object-cover w-full h-full"
-                  quality={85}
-                />
-              </div>
-              <div className="flex-1 truncate">
-                <h2 className="text-xl font-medium truncate">{link.title}</h2>
-              </div>
-            </CardContent>
-          </Card>
-        </Link>
-      ))}
+      {linksWithOgImages.map((link) => {
+        if (link.ogImage?.startsWith("https://dev-link-iota.vercel.app"))
+          link.ogImage = "/logo2.webp";
+
+        return (
+          <Link href={link.url} key={link.id}>
+            <Card className="py-4 shadow-md">
+              <CardContent className="flex space-x-6 items-center">
+                <div className="w-16 h-16 rounded-xl overflow-hidden relative">
+                  <Image
+                    src={link.ogImage || "/default-og-image.webp"}
+                    alt={link.title}
+                    fill
+                    className="object-cover w-full h-full"
+                    quality={85}
+                  />
+                </div>
+                <div className="flex-1 truncate">
+                  <h2 className="text-xl font-medium truncate">{link.title}</h2>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
+        );
+      })}
       <ProfileBtn username={username} />
     </div>
   );
