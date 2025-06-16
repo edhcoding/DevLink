@@ -1,29 +1,60 @@
-<a href="http://localhost:3000">
-  <img src="./public/logo.png" alt="Logo Image">
+<a href="https://dev-link-iota.vercel.app">
+  <img src="./public/logo2.png" alt="Logo Image">
   <h1 align="center">DevLink</h1>
 </a>
 
 <p align="center">
- The fastest way to build apps with Next.js and Supabase
+ 나만의 프로필 링크를 만들고 공유할 수 있는 서비스 입니다.
 </p>
 
-<p align="center">
-  <a href="#helloworld"><strong>Helloworld</strong></a> ·
-  <a href="#side"><strong>Side</strong></a> ·
-  <a href="#project"><strong>Project</strong></a> ·
-</p>
-<br/>
+## 🌟 주요 기능
 
-## Helloworld
+- **프로필 만들기**: 나를 소개할 수 있는 커스텀 가능한 프로필 링크를 만들 수 있습니다
+- **소셜 로그인**: Google, GitHub 소셜 로그인이 가능합니다
+- **프로필 공유**: 프로필 링크 or QR Code 이미지를 다운받아 공유할 수 있습니다
+- **QR Scanner**: 공유받은 QR Code 이미지를 QR Scanner를 통해 인식할 수 있습니다
+- **반응형 디자인**: 모바일과 데스크톱 환경을 모두 지원합니다
+- **다크 모드**: 라이트/다크 모드를 지원합니다
 
-- HI
-  - Side
-  - Project
+## 🛠 기술 스택
 
-## Side
+### Frontend
 
-> Side
+- React 19
+- Next.js App Router
+- TypeScript
+- ShadcnUI
+- TailwindCSS
+- React Hook Form
+- Zod
+- QR Code & QR Scanner
 
-## Project
+### Backend & Infrastructure
 
-> Project
+- Supabase
+  - Authentication
+  - Database
+  - Storage
+
+## 🎯 주요 특징
+
+### Next.js App Router
+
+- 서버 컴포넌트를 활용한 효율적인 서버 사이드 렌더링
+- 사용자 프로필에 따른 동적 메타데이터 생성
+- 서버 액션을 통한 프로필 업데이트, 이미지 업로드 등의 서버 사이드 로직 분리 및 처리
+
+### 인증 및 보안
+
+- Google, GitHub OAuth 인증 지원
+- 미들웨어를 통한 인증 상태 확인 및 보호된 라우트 접근 제어
+- Row Level Security (RLS)로 데이터베이스 접근 권한 제어
+- 욕설 필터링 (Aho-Corasick 알고리즘 사용)
+
+### 사용자 경험 (UX)
+
+- ShadcnUI를 활용한 직관적이고 부드러운 애니메이션
+- 로딩/에러 상태 처리
+- 토스트 메시지를 통한 사용자 피드백
+- 시스템 설정에 따른 자동 테마 전환 지원
+- 링크 복사, QR 코드 생성 및 다운로드, QR Scanner 지원

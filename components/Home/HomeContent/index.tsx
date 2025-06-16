@@ -65,8 +65,8 @@ export default function HomeContent({
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden">
       <Card className="w-[320px] border-none bg-transparent shadow-none">
-        <CardHeader>
-          <CardTitle className="flex items-center justify-center gap-2 text-black dark:text-white text-5xl font-extrabold mb-2">
+        <CardHeader className="mb-2">
+          <CardTitle className="flex items-center justify-center gap-2 text-black dark:text-white text-5xl font-extrabold">
             DevLink
             <Link className="size-8" />
           </CardTitle>
