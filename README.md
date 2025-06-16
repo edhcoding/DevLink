@@ -58,6 +58,6 @@
 
 ### 로딩 및 에러 처리
 
-- Suspense와 Sekelton UI를 활용한 자연스로운 데이터 로딩 처리
+- Suspense와 Skeleton UI를 활용한 자연스로운 데이터 로딩 처리
 - ErrorBoundary와 Error 페이지 구현을 통한 전역 에러 처리
 - 404 페이지 및 인증 오류 페이지 구현으로 사용자 경험 개선
