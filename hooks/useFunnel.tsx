@@ -9,8 +9,16 @@ export interface FunnelProps {
   children: Array<ReactElement<StepProps>>;
 }
 
-export default function useFunnel(defaultStep: string) {
-  const [step, setStep] = useState(defaultStep);
+type UseFunnelReturn<T> = {
+  Funnel: (props: FunnelProps) => ReactElement;
+  Step: (props: StepProps) => ReactElement;
+  currentStep: T;
+  nextClickHandler: (nextStep: T) => void;
+  prevClickHandler: (prevStep: T) => void;
+};
+
+export default function useFunnel<T>(initialStep: T): UseFunnelReturn<T> {
+  const [step, setStep] = useState(initialStep);
 
   const Step = useCallback((props: StepProps): ReactElement => {
     return <>{props.children}</>;
@@ -27,8 +35,8 @@ export default function useFunnel(defaultStep: string) {
     [step]
   );
 
-  const nextClickHandler = (nextStep: string) => setStep(nextStep);
-  const prevClickHandler = (prevStep: string) => setStep(prevStep);
+  const nextClickHandler = (nextStep: T) => setStep(nextStep);
+  const prevClickHandler = (prevStep: T) => setStep(prevStep);
 
   return {
     Funnel,
