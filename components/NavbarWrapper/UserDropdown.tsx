@@ -46,7 +46,7 @@ export default function UserDropdown({
           <User className="mr-1" />내 프로필
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => router.push(`/account`)}>
+        <DropdownMenuItem onClick={() => router.push(`/profile-setup`)}>
           <Wrench className="mr-1" /> 프로필 설정
         </DropdownMenuItem>
         <DropdownMenuSeparator />

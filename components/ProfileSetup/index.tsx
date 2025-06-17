@@ -1,14 +1,14 @@
 "use client";
 
 import type { Tables } from "@/database.types";
-import StepProfile from "@/components/Account/StepProfile";
+import StepProfile from "@/components/ProfileSetup/StepProfile";
 import useFunnel from "@/hooks/useFunnel";
 import { FormData } from "@/types/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
-import StepSocialInfo from "@/components/Account/StepSocialInfo";
-import StepAddLinks from "@/components/Account/StepAddLinks";
-import StepSummary from "@/components/Account/StepSummay";
+import StepSocialInfo from "@/components/ProfileSetup/StepSocialInfo";
+import StepAddLinks from "@/components/ProfileSetup/StepAddLinks";
+import StepSummary from "@/components/ProfileSetup/StepSummay";
 import BreadcrumbStep from "@/components/BreadcrumbStep";
 import { useRouter } from "next/navigation";
 import { updateProfile } from "@/lib/supabase/actions/profile/action";
@@ -23,7 +23,7 @@ interface Props {
 
 const steps = ["Profile", "Social Info", "Add Links", "Summary"];
 
-export default function Account({ profile, links }: Props) {
+export default function ProfileSetup({ profile, links }: Props) {
   const { Funnel, Step, currentStep, nextClickHandler, prevClickHandler } =
     useFunnel("Profile");
 

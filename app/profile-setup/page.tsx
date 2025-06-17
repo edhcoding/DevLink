@@ -1,4 +1,4 @@
-import Account from "@/components/Account";
+import Account from "@/components/ProfileSetup";
 import createClient from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 
@@ -6,7 +6,7 @@ export default async function Page() {
   const supabase = await createClient();
   const { data, error } = await supabase.auth.getUser();
   const searchParams = new URLSearchParams({
-    next: "/account",
+    next: "/profile-setup",
   });
 
   if (error || !data.user) redirect(`/${searchParams.toString()}`);

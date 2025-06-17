@@ -63,7 +63,7 @@ export default async function LinkList({ links, error, username }: Props) {
         </p>
         <Separator className="mt-8" />
         <Button variant="outline" className="mt-8" asChild>
-          <Link href="/account">
+          <Link href="/profile-setup">
             링크 추가하기 <ChevronRight />
           </Link>
         </Button>

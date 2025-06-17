@@ -34,7 +34,7 @@ export async function uploadAvatar(formData: FormData) {
 
   if (updateError) throw updateError;
 
-  revalidatePath("/account");
+  revalidatePath("/profile-setup");
 
   return publicUrl;
 }
@@ -81,7 +81,7 @@ export async function updateProfile(formData: z.infer<typeof formSchema>) {
 
   if (insertError) throw insertError;
 
-  revalidatePath("/account");
+  revalidatePath("/profile-setup");
 
   return { success: true };
 }
@@ -118,7 +118,7 @@ export async function removeAvatar(userId: string) {
 
   if (updateError) throw updateError;
 
-  revalidatePath("/account");
+  revalidatePath("/profile-setup");
 
   return { success: true };
 }

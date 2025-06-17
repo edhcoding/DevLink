@@ -81,7 +81,7 @@ export default function HomeContent({
                 <Button
                   variant="outline"
                   className="font-semibold"
-                  onClick={() => router.push("/account")}
+                  onClick={() => router.push("/profile-setup")}
                 >
                   새로운 링크 만들기
                   <Plus className="size-4" />
